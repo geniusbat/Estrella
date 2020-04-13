@@ -1,0 +1,45 @@
+.texto {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.titulo {
+    padding-top: 5%; 
+    padding-bottom: 2%;
+}
+
+.nav {
+    background-color: #daeeed;
+}
+
+.btn {
+    background-color: whitesmoke;
+}
+
+.header img {
+    width: 50%;
+}
+
+.header {
+    background-color: #5aafac;
+}
+
+body {
+    background-color: #5aafac;
+}
+
+p {
+    font-size: large;
+}  
+
+.btn:hover {
+    color: teal;
+    background-color: whitesmoke;
+    border: hidden;
+}
+
+.btn {
+    color: black;
+    background-color: white;
+    border: hidden;
+}

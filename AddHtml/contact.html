@@ -1,0 +1,13 @@
+<h2 class="d-flex flex-row texto titulo"> 
+    Contacto
+</h2>
+<p class="d-flex flex-row texto">
+    Contáctanos para más información y pedidos personalizados
+</p>
+<form action="handleContact.php" class="texto" method="POST">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email" placeholder="Su email" name="email" required>
+    <label for="nombre">Nombre:</label>
+    <input type="text" class="form-control" id="nombre" placeholder="Su nombre" name="nombre" pattern="^[A-ZÁÉÍÓÚÑ]*(\s|[a-zñ]+|[áéíóúÁÉÍÚÓ]*|[A-ZÑ])+" required>
+    <button type="submit" class="btn" style="margin-top: 1%;">Submit</button>
+</form>
