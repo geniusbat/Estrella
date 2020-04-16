@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Verify login</title>
+    <title>Admin</title>
     <meta charset="utf-8">
     <meta lang="es">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,21 +16,20 @@
 
 <body>
     <?php
-        echo("Estamos");
-        echo($_REQUEST["user"]);
-        echo($_REQUEST["pass"]);
-        $user = $_REQUEST["user"];
-        $pass = $_REQUEST["pass"];
-        $a1 = preg_match("/[A-ZÑa-zñ\_\-0-9]*/",$user);
-        $a2 = preg_match("/[A-ZÑa-zñ\_\-0-9]*/",$pass);
-        if (($user=="user")and($pass=="pass")and($a1)and($a2)) {//Obtener a través de PDO las constraseñas correctas
-            session_start();
-            $_SESSION["admin"]=1;
-            echo($_SESSION["admin"]);
-            header("refresh:1; url=../adminPage.php");
+        session_start();
+        if (isset($_SESSION["admin"])) {
+            if ($_SESSION["admin"]==1){
+                include("AddHtml/nav.html");
+                include("AddHtml/adminPage.html");
+            }
+            else {
+                header("refresh:1; url=index.html");
+            }
         }
         else {
-            header("refresh:5; url=../index.html");
+            echo("non");
+            $_SESSION["admin"]=0;
+            header("refresh:1; url=index.html");
         }
     ?>
 </body>
