@@ -27,7 +27,7 @@
             }
         }
         else {
-            echo("non");
+            echo("Not admin");
             $_SESSION["admin"]=0;
             header("refresh:1; url=index.html");
         }
