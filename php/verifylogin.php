@@ -16,6 +16,8 @@
 
 <body>
     <?php
+        //Aquí deberíamos poblar la base de datos si fuera necesario
+        
         echo("Estamos");
         echo($_REQUEST["user"]);
         echo($_REQUEST["pass"]);

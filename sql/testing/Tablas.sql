@@ -1,5 +1,6 @@
 drop table encargos;
 drop table pedidos;
+drop table usuariosVIP;
 drop table usuarios;
 drop table provisiones;
 drop table proveedores;
@@ -7,7 +8,6 @@ drop table manufacturacion;
 drop table productos;
 drop table materiales;
 drop table empleados;
-drop table usuariosVIP;
 drop table personas;
 
 create table materiales(
@@ -22,7 +22,7 @@ create table productos(
     productoID integer primary key,
     nombre varchar(10) not null,
     descripcion varchar(70),
-    personalizable char(1), 
+    personalizable varchar(1), 
     precioBase number(8,2) not null,
     ventas integer
 );
@@ -56,17 +56,17 @@ create table provisiones(
     foreign key (proveedorID) references proveedores on delete CASCADE
 );
 
+create table usuarios(
+    usarioID integer primary key,
+    dni char(9) not null,
+    foreign key (dni) references personas on delete Cascade
+);
+
 create table usuariosVIP (
     vipID integer primary key,
     usuarioID integer,
     extra varchar(30) not null,
     foreign key (usuarioID) references usuarios on delete CASCADE
-);
-
-create table usuarios(
-    usarioID integer primary key,
-    dni char(9) not null,
-    foreign key (dni) references personas on delete Cascade
 );
 
 create table pedidos(
