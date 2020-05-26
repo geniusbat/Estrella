@@ -1,0 +1,55 @@
+set serveroutput on;
+
+begin
+    dbms_output.put_line('Materiales: ');
+    pruebas_materiales.inicializar;
+    pruebas_materiales.insertar('kilos', 7, 'grande', 'kilos', true);
+    pruebas_materiales.actualizar(secuenciamateriales.currval, 8, 8, true);
+    pruebas_materiales.eliminar(7, true);
+    dbms_output.put_line('Productos: ');
+    pruebas_productos.inicializar;
+    pruebas_productos.insertar('aa',23,true,'aa',23);
+    pruebas_productos.actualizar(secuenciaproductos.currval,'abc','abc',true);
+    pruebas_productos.eliminar(0,false); /*Si elimino currval entonces encargos no funciona ya q no existe la FK*/
+    dbms_output.put_line('Manufacturación: ');
+    pruebas_manufacturacion.inicializar;
+    pruebas_manufacturacion.insertar(secuenciamateriales.currval, secuenciaproductos.currval, 3, 3, true);
+    pruebas_manufacturacion.actualizar(secuenciamanufacturacion.currval, 3, 3, true);
+    pruebas_manufacturacion.eliminar(7, true);
+    dbms_output.put_line('Proveedores: ');
+    pruebas_proveedores.inicializar;
+    pruebas_proveedores.insertar('Esteros', 15, 15, true);
+    pruebas_proveedores.actualizar(secuenciaproveedores.currval, 2, 2, true);
+    pruebas_proveedores.eliminar(7, true);
+    dbms_output.put_line('Usuarios: ');
+    pruebas_usuarios.inicializar;
+    pruebas_usuarios.insertar('26839538x','Antonio','Calle mocatriz', '26839538x','Antonio',true);
+    pruebas_usuarios.actualizar('26839538x', 675897450,675897450 ,true);
+    pruebas_usuarios.eliminar('26839539x', false);
+    dbms_output.put_line('Pedidos: ');
+    pruebas_pedidos.inicializar;
+    pruebas_pedidos.insertar(25,sysdate,'26839538x', 25,true);
+    pruebas_pedidos.actualizar(secuenciapedidos.currval,266 ,266 ,true);
+    pruebas_pedidos.eliminar(20, false);
+    dbms_output.put_line('Encargos: ');
+    pruebas_encargos.inicializar;
+    pruebas_encargos.insertar(secuenciaproductos.currval, secuenciapedidos.currval, '', 0, 23,true);
+    pruebas_encargos.actualizar(secuenciaencargos.currval,25,25,true);    
+    pruebas_encargos.eliminar(secuenciaencargos.currval,true);      
+    dbms_output.put_line('Horarios: ');
+    pruebas_horarios.inicializar;
+    pruebas_horarios.insertar('jornadaTarde', 'jornadaCompleta', 'jornadaCompleta', 'jornadaCompleta', 'jornadaMañana', 'jornadaCompleta', true);
+    pruebas_horarios.actualizar(secuenciahorarios.currval, null, null, true);
+    pruebas_horarios.eliminar(10, true);
+    dbms_output.put_line('Empleados: ');
+    pruebas_empleados.inicializar;
+    pruebas_empleados.insertar('15427850W', 'Jose', 'Esteros', '678453821', 1700, secuenciahorarios.currval, 1700, true);
+    pruebas_empleados.actualizar(secuenciaEmpleados.currval, 1900, 1900, true);
+    pruebas_empleados.eliminar(secuenciaEmpleados.currval, true);
+    dbms_output.put_line('UsuariosVip: ');
+    pruebas_usuariosVIP.inicializar;
+    pruebas_usuariosVIP.insertar('Es amigo de mi hijo','Es amigo de mi hijo', true);
+    pruebas_usuariosVIP.actualizar(secuenciaUsuariosVIp.currval,'Es amigo de mi amiga','Es amigo de mi amiga',true);
+    pruebas_usuariosVIP.eliminar(secuenciaUsuariosVIp.currval, true);
+end;
+
