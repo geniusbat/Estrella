@@ -17,22 +17,35 @@
 <body>
     <?php
         //Aquí deberíamos poblar la base de datos si fuera necesario
-        
-        echo("Estamos");
-        echo($_REQUEST["user"]);
-        echo($_REQUEST["pass"]);
-        $user = $_REQUEST["user"];
-        $pass = $_REQUEST["pass"];
-        $a1 = preg_match("/[A-ZÑa-zñ\_\-0-9]*/",$user);
-        $a2 = preg_match("/[A-ZÑa-zñ\_\-0-9]*/",$pass);
-        if (($user=="user")and($pass=="pass")and($a1)and($a2)) {//Obtener a través de PDO las constraseñas correctas
-            session_start();
-            $_SESSION["admin"]=1;
-            echo($_SESSION["admin"]);
-            header("refresh:1; url=../adminPage.php");
+        try {
+            $conDB = new PDO("oci:dbname=localhost/XE","GUSMOLAGU","root");
+            $conDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            //echo($_REQUEST["user"]);
+            //echo($_REQUEST["pass"]);
+            $user = $_REQUEST["user"];
+            $pass = $_REQUEST["pass"];
+            $a1 = preg_match("/[A-ZÑa-zñ\_\-0-9]*/",$user);
+            $a2 = preg_match("/[A-ZÑa-zñ\_\-0-9]*/",$pass);
+            
+            $objPass= $conDB->prepare("SELECT PASS FROM LOGIN WHERE LOGIN.DNI='26839538Y'" );
+            $objPass->execute();
+            $expectedPass= $objPass->fetchColumn();
+            echo ($expectedPass);
+
+            if (($pass==$expectedPass)and($a1)and($a2)) {//Obtener a través de PDO las constraseñas correctas
+                session_start();
+                $_SESSION["admin"]=1;
+                //echo($_SESSION["admin"]);
+                header("refresh:1; url=../adminPage.php");
+            }
+            else {
+                echo("Fallo de usuario");
+                header("refresh:5; url=../index.html");
+            }
         }
-        else {
-            header("refresh:5; url=../index.html");
+        catch (PDOException $e)  {
+            echo 'Error';
         }
     ?>
 </body>

@@ -8,6 +8,7 @@ drop table manufacturacion;
 drop table productos;
 drop table materiales;
 drop table empleados;
+drop table login;
 drop table personas;
 
 create table materiales(
@@ -100,4 +101,11 @@ create table empleados(
     dias varchar(20),
     horario varchar(15),
     foreign key (dni) references personas on delete Cascade
+);
+
+create table login (
+    loginID integer primary key,
+    dni char(9) not null,
+    pass varchar(10) not null,
+    FOREIGN key (dni) references personas on delete Cascade
 );
