@@ -97,7 +97,6 @@ create table empleados(
     empleadoID integer primary key,
     dni char(9) not null,
     sueldo number(6,2) not null,
-    horarioID integer not null,
     dias varchar(20),
     horario varchar(15),
     foreign key (dni) references personas on delete Cascade

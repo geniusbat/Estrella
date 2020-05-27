@@ -1,10 +1,12 @@
 <h2 class="d-flex flex-row texto titulo"> 
     Login admin
 </h2>
-<form action="../estrella/php/verifylogin.php" class="texto" method="POST">
+<script type="text/javascript" src="../js/verifylogin.js"></script>
+
+<form action="../estrella/php/verifylogin.php" class="texto" method="POST" onSubmit="return validateFormLogin()">
     <label for="usuario">Usuario:</label>
-    <input id="usuario" class="form-control" name="user" placeholder="Usuario" pattern="[A-ZÑa-zñ\_\-0-9]*">
+    <input id="usuario" class="form-control" name="user" placeholder="Usuario">
     <label for="pass">Contraseña:</label>
-    <input id="pass" class="form-control" name="pass" placeholder="Contraseña" pattern="[A-ZÑa-zñ\_\-0-9]*">
+    <input id="pass" class="form-control" name="pass" placeholder="Contraseña">
     <button type="submit" class="btn" style="margin-top: 1%;">Enviar</button>
 </form>

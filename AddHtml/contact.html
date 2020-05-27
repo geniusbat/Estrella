@@ -4,10 +4,34 @@
 <p class="d-flex flex-row texto">
     Contáctanos para más información y pedidos personalizados
 </p>
-<form action="handleContact.php" class="texto" method="POST">
+<script>
+    function validateFormContact() {
+        var name = document.getElementById("nombre").value;
+        var email = document.getElementById("email").value;
+        //Check if inputs are empty
+        if ((name.length>0)&&(email.length>0)) {
+            //Check if name is correct
+            pattern = /[A-Za-z]*/; //AUN NO FUNCIONA
+            console.log(pattern.test(name));
+            if (pattern.test(name)) {
+                return true;
+            }
+            else {
+                alert("Escriba el usuario de forma correcta");
+                return false;
+            }
+        }
+        else {
+            alert("Rellene el formulario");
+            return false;
+        }
+    }
+</script>
+<form action="handleContact.php" class="texto" method="POST" onsubmit="return validateFormContact()">
     <label for="email">Email:</label>
     <input type="email" class="form-control" id="email" placeholder="Su email" name="email" required>
     <label for="nombre">Nombre:</label>
-    <input type="text" class="form-control" id="nombre" placeholder="Su nombre" name="nombre" pattern="^[A-ZÁÉÍÓÚÑ]*(\s|[a-zñ]+|[áéíóúÁÉÍÚÓ]*|[A-ZÑ])+" required>
+    <!--<input type="text" class="form-control" id="nombre" placeholder="Su nombre" name="nombre" pattern="^[A-ZÁÉÍÓÚÑ]*(\s|[a-zñ]+|[áéíóúÁÉÍÚÓ]*|[A-ZÑ])+" required>-->
+    <input type="text" class="form-control" id="nombre" placeholder="Su nombre" name="nombre" required>
     <button type="submit" class="btn" style="margin-top: 1%;">Enviar</button>
 </form>
