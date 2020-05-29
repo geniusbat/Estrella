@@ -23,9 +23,10 @@ create table productos(
     productoID integer primary key,
     nombre varchar(10) not null,
     descripcion varchar(70),
-    personalizable varchar(1), 
+    personalizable integer, 
     precioBase number(8,2) not null,
-    ventas integer
+    ventas integer,
+    direccion varchar(70)
 );
 
 create table manufacturacion(

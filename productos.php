@@ -17,7 +17,45 @@
 <body>
     <?php
         include("AddHtml/nav.html");
-        include("AddHtml/productos.html");
+        require_once("gestionBD.php");
+        session_start();
+        $conDB = iniciaConexion();
+        echo "<div id='notif' style='visibility: hidden;'>Producto añadido</div>";
+        $objPass= $conDB->prepare("SELECT * FROM PRODUCTOS");
+        $objPass->execute();
+        echo ('<div class="d-flex flex-row justify-content-around flex-wrap titulo">');
+        foreach($objPass as $fila) {
     ?>
+        <div class="producto" style="margin: auto;">
+            <img src="img/<?php echo($fila[6]); ?>" width="100px" height="100px">
+            <h2><?php echo($fila[1]);?></h2>
+            <p><?php echo($fila[2]); ?></p>
+            <form action="php/addCesta.php" method="POST" id="myForm">
+            <input id="id" type="hidden" name="id" value="<?php echo($fila[0]);?>">
+            <button onClick="addToCesta(<?php echo($fila[0]);?>)">Add to cart</button>
+            </form>
+        </div>
+    <?php
+        }
+        echo("</div>");
+        cierraConexion($conDB);
+    ?>
+    <script>
+        function addToCesta(selfId) {
+            document.getElementById("myForm").submit();
+            /*
+            $.post("php/addCesta.php",
+                {
+                    "id": selfId
+                },
+                function() {
+                    console.log("Mensaje enviado a cesta");
+        
+                }
+                );*/
+                document.getElementById("notif").style.visibility="visible";
+                setTimeout('document.getElementById("notif").style.visibility="hidden";',800);
+        }        
+    </script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!--Header-->
+<div class="header d-flex flex-row justify-content-center">
+    <img src="../img/Estrella-test.jpg" alt="Floristería Estrella">
+</div>
+<!--Nav-->
+<div class="nav d-flex flex-row justify-content-around flex-wrap" id="nav">
+    <a type="button" class="btn" href="../index.html">Inicio</a>
+    <a type="button" class="btn" href="../productos.php">Productos</a>
+    <a type="button" class="btn" href="../contact.php">Contacto</a>
+    <a type="button" class="btn" href="../about.php">Sobre nosotros</a>
+    <a type="button" class="btn" href="../cesta.php">Cesta</a>
+</div>
+<div id="nav2" class="nav2">
+    <img src="../img/moreMenu.png" onclick="esconder()" onload="iniciarNav2()"><br>
+    <div id="esconder">
+        <a type="button" class="btn" href="../index.html">Inicio</a><br>
+        <a type="button" class="btn" href="../productos.php">Productos</a><br>
+        <a type="button" class="btn" href="../contact.php">Contacto</a><br>
+        <a type="button" class="btn" href="../about.php">Sobre nosotros</a><br>
+        <a type="button" class="btn" href="../cesta.php">Cesta</a><br>
+    </div>
+    <script>
+        function iniciarNav2() {
+            var x = document.getElementById("esconder");
+            x.style.display="none";
+        }
+        function esconder() {
+            var x = document.getElementById("esconder");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+</div>

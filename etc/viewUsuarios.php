@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin</title>
+    <title>Usuarios</title>
     <meta charset="utf-8">
     <meta lang="es">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,25 +11,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
 <body>
     <?php
+        require_once("../gestionBD.php");
+        require_once("../php/isAdmin.php");
         session_start();
-        if (isset($_SESSION["admin"])) {
-            if ($_SESSION["admin"]==1){
-                include("AddHtml/nav.html");
-                include("AddHtml/adminPage.html");
-            }
-            else {
-                header("refresh:1; url=index.html");
-            }
-        }
-        else {
-            echo("Not admin");
-            $_SESSION["admin"]=0;
-            header("refresh:1; url=index.html");
+        if (isAdmin()) {
+            $conDB = iniciaConexion();
+
         }
     ?>
 </body>

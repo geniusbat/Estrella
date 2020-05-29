@@ -30,18 +30,6 @@
     #nav2 { display: none; }   /* hide it elsewhere */
 }
 
-.nav2 img {
-    width: 13%;
-    margin-left: 2%;
-}
-
-.nav2 .btn {
-    background-color: #9DC183;
-    border: 2px;
-    border-color: black;
-    margin-left: 5%;
-}
-
 body {
     background-color: #FFFF;
 }
@@ -58,4 +46,25 @@ p {
 .texto {
     padding-left: 5%;
     padding-right: 5%;
+}
+
+.formError {
+    padding-left: 5%;
+    color: red;
+}
+
+.tablaShow {
+    margin: 1% 5%;
+}
+
+.tablaShow td, th {
+    border: 1px solid black;
+}
+  
+#notif {
+    margin-left: 5%;
+    margin-top: 1%;
+    background-color: #9DC183;
+    border: 1px solid black;
+    width: fit-content;
 }
