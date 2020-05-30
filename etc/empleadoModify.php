@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Modificar Usuario</title>
+    <title>Modificar Empleado</title>
     <meta charset="utf-8">
     <meta lang="es">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,7 @@
         ?>
         <!--Formulario-->
         <div class="notif"></div>
-        <h2 class='d-flex flex-row texto titulo'>Modificando usuario</h2>
+        <h2 class='d-flex flex-row texto titulo'>Modificando empleado</h2>
         <form action="updateEmpleados.php" class="texto" method="POST" onSubmit="return isOneChecked()">
             <p>DNI: <?php echo($_REQUEST["dni"]);?></p>
             <input id="dni" class="form-control" type="hidden" name="dni" value="<?php echo($_REQUEST["dni"]);?>" placeholder="dni" required pattern="^([0-9]{8}[A-ZÑa-zñ])"maxlength="9">
@@ -40,7 +40,7 @@
             <input id="dias" type="dias" class="form-control" name="dias" value="<?php echo($_REQUEST["dias"]);?>" placeholder="descripcion" required pattern="[A-Za-z0-9ÑñÁÉÚÓÍáéúíó ,]+"maxlength="30">
             <input id="id" type="hidden" name="id" value="<?php echo($_REQUEST["id"]);?>"required>
             <button type="submit" class="btn" name="action" value="update" style="margin-top: 1%;">Enviar</button>
-            <button type="submit" class="btn" name="action" value="delete" style="margin-top: 1%;">Eliminar Usuario</button>
+            <button type="submit" class="btn" name="action" value="delete" style="margin-top: 1%;">Eliminar Empleado</button>
         </form>
         
         <script>

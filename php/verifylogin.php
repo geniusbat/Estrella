@@ -26,20 +26,27 @@
         $a1 = preg_match("/^([0-9]{8}[A-ZÑa-zñ])/",$usuario);
         $a2 = preg_match("/^[A-ZÑa-zñ\_\-0-9]*/",$pass);
         $objPass= $conDB->prepare("SELECT PASS FROM LOGIN WHERE LOGIN.DNI=:usuario");
-        try {
-            $objPass->bindparam(':usuario',$usuario);
-            $objPass->execute();
-            $expectedPass= $objPass->fetch()[0]; //De repente esto no funciona
-        }
-        catch (PDOException $e) {
-            $f = fopen("/etc/errors.txt","w");
-            fwrite($f,$e->getMessage());
-            fclose($f);
-        }
-        if (($pass==$expectedPass)and($a1)and($a2)) {
-            session_start();
-            $_SESSION["admin"]=1;
-            header("refresh:0; url=../etc/adminPage.php");
+        if (($a1)and($a2)) {
+            try {
+                $objPass->bindparam(':usuario',$usuario);
+                $objPass->execute();
+                $expectedPass= $objPass->fetch()[0]; //De repente esto no funciona
+            }
+            catch (PDOException $e) {
+                $f = fopen("/etc/errors.txt","w");
+                fwrite($f,$e->getMessage());
+                fclose($f);
+            }
+            if (($pass==$expectedPass)) {
+                session_start();
+                $_SESSION["admin"]=1;
+                header("refresh:0; url=../etc/adminPage.php");
+            }
+            else {
+                include("../AddHtml/navSecondary.html");
+                echo("<p>Información mal escrita, por favor vuelva a intentarlo</p>");
+                header("refresh:6; url=../login.php");
+            }
         }
         else {
             include("../AddHtml/navSecondary.html");
