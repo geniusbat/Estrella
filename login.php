@@ -17,8 +17,16 @@
 <body>
     <?php
         //Login admin
-        include("AddHtml/nav.html");
-        include("AddHtml/login.html")
+        session_start();
+        if (!isset($_SESSION["admin"])) {
+            include("AddHtml/nav.html");
+            include("AddHtml/login.html");
+        }
+        else {
+            if ($_SESSION["admin"]==1) {
+                header("refresh:0; url=etc/adminPage.php");
+            }
+        }
     ?>
 </body>
 </html>

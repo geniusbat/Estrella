@@ -4,8 +4,8 @@
     session_start();
     if (isset($_SESSION["cesta"])) {
         $cesta = $_SESSION["cesta"];
-        $cesta = array_diff($cesta,[$id]);
+        $cesta = array_diff($cesta,array($id));
         $_SESSION["cesta"]=$cesta;
     }
-    header("refresh:0; url=../cesta.php");
+    header("refresh:1; url=../cesta.php");
 ?>

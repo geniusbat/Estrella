@@ -30,6 +30,12 @@
     #nav2 { display: none; }   /* hide it elsewhere */
 }
 
+#nav2 img {
+    margin-left: 3%;
+    width: 10%;
+    height: auto;
+}
+
 body {
     background-color: #FFFF;
 }

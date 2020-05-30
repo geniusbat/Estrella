@@ -26,38 +26,17 @@
             echo ("Cesta vacía");
         }
         elseif (count($_SESSION["cesta"])>0) {
-            echo count($_SESSION["cesta"]);
             //include("AddHtml/cesta.html");
             $contenido = $_SESSION["cesta"];
             $cadena = "SELECT * FROM PRODUCTOS WHERE ";
-            $i=0;
-            echo"contenido";
-            while ($i<=count($contenido)-1) {
-                
-                echo",";
-                echo $contenido[$i];
-                echo $i;
-                //echo ";";
+            for ($i=0; $i<count($contenido);$i++) {
                 if ($i==0) {
-                    $cadena = $cadena . "PRODUCTOS.PRODUCTOID=". $contenido[$i];
-                    echo $cadena;
-                    echo ";";
-                }
-                elseif ($i=count($contenido)-1) {
-                    $cadena = $cadena . " OR PRODUCTOS.PRODUCTOID=". $contenido[$i];
-                    echo $cadena;
-                    echo ";";
+                    $cadena = $cadena . " PRODUCTOS.PRODUCTOID=". $contenido[$i];
                 }
                 else {
-                    $cadena = $cadena . "OR PRODUCTOS.PRODUCTOID=". $contenido[$i];
-                    echo $cadena;
-                    echo ";";
+                    $cadena = $cadena . " OR PRODUCTOS.PRODUCTOID=". $contenido[$i];
                 }
-                $i = $i+1;
-                //echo $i;
             }
-            echo";    ";
-            echo($cadena);
             $objPass= $conDB->prepare($cadena);
             $objPass->execute();
             echo("<table class='tablaShow'>");
@@ -66,7 +45,7 @@
                 echo "<tr>";
                 echo '<form action="php/deleteCesta.php" class="texto" method="POST">';
                 ?>
-                <td><img src="img/<?php echo($fila[6]); ?>" width="5%" height="5%" style="padding=0px;margin=0px;"></td>
+                <td><img src="img/<?php echo($fila[6]); ?>" width="auto" height="10%" style="padding=0px;margin=0px;"></td>
                 <?php
                 echo "<td>",$fila[1],"</td>" ;
                 echo "<td>",$fila[3],"</td>" ;

@@ -39,9 +39,9 @@ create table manufacturacion(
 
 create table personas(
     dni char(9) primary key,
-    nombre varchar(15) not null,
-    direccion varchar(20),
-    telefono char(9)
+    nombre varchar(25) not null,
+    direccion varchar(25),
+    telefono char(11)
 );
 
 create table proveedores(
@@ -97,8 +97,8 @@ create table encargos(
 create table empleados(
     empleadoID integer primary key,
     dni char(9) not null,
-    sueldo number(6,2) not null,
-    dias varchar(20),
+    sueldo number(10,2) not null,
+    dias varchar(30),
     horario varchar(15),
     foreign key (dni) references personas on delete Cascade
 );

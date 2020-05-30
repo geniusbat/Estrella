@@ -14,24 +14,24 @@
             pattern = /[A-Za-z]*/; //AUN NO FUNCIONA
             console.log(pattern.test(name));
             if (pattern.test(name)) {
-                return true;
+                document.getElementById("contactForm").submit();
             }
             else {
                 alert("Escriba el usuario de forma correcta");
-                return false;
             }
         }
         else {
             alert("Rellene el formulario");
-            return false;
         }
     }
 </script>
-<form action="handleContact.php" class="texto" method="POST" onsubmit="return validateFormContact()">
+<form action="php/handleContact.php" class="texto" id="contactForm" method="POST">
     <label for="email">Email:</label>
     <input type="email" class="form-control" id="email" placeholder="Su email" name="email" required>
     <label for="nombre">Nombre:</label>
     <!--<input type="text" class="form-control" id="nombre" placeholder="Su nombre" name="nombre" pattern="^[A-ZÁÉÍÓÚÑ]*(\s|[a-zñ]+|[áéíóúÁÉÍÚÓ]*|[A-ZÑ])+" required>-->
     <input type="text" class="form-control" id="nombre" placeholder="Su nombre" name="nombre" required>
-    <button type="submit" class="btn" style="margin-top: 1%;">Enviar</button>
+    <input type="checkbox" id="mandar" name="mandar" value="true">
+    <label for="mandar"> Quiero mandar mi cesta a mi petición de contacto</label><br>
+    <button type="button" class="btn" style="margin-top: 1%;" onclick="validateFormContact()">Enviar</button>
 </form>

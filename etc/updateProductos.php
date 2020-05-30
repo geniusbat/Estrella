@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tabla</title>
+    <title>Updating</title>
     <meta charset="utf-8">
     <meta lang="es">
     <meta name="viewport" content="width=device-width, initial-scale=1">
