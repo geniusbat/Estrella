@@ -32,7 +32,7 @@
                 $objPass->bindparam(":telefono",$telefono);$objPass->bindparam(":direccion",$direccion);
                 $objPass->bindparam(":id",$id);
                 $objPass->execute();
-                header("refresh:0; url=viewEmpleados.php"); 
+                header("refresh:0; url=viewUsuarios.php"); 
             }
             elseif ("create"==$_REQUEST["action"]) {
                 $dni = $_REQUEST["dni"];
@@ -43,20 +43,20 @@
                 $objPass->bindparam(":dni",$dni);$objPass->bindparam(":nombre",$nombre);
                 $objPass->bindparam(":telefono",$telefono);$objPass->bindparam(":direccion",$direccion);
                 $objPass->execute();
-                header("refresh:0; url=viewEmpleados.php"); 
+                header("refresh:0; url=viewUsuarios.php"); 
             }
             elseif ("delete"==$_REQUEST["action"]) {
-                $id = $_REQUEST["id"];
-                $objPass= $conDB->prepare("DELETE FROM EMPLEADOS WHERE EMPLEADOS.EMPLEADOID=:id");
-                $objPass->bindparam(":id",$id);
+                $dni = $_REQUEST["dni"];
+                $objPass= $conDB->prepare("DELETE FROM PERSONAS WHERE PERSONAS.DNI=:dni");
+                $objPass->bindparam(":dni",$dni);
                 $objPass->execute();
-                header("refresh:0; url=viewEmpleados.php"); 
+                header("refresh:0; url=viewUsuarios.php"); 
             }
         }
         }
         catch (PDOException $e) {
             echo ($e->getMessage());
-            header("refresh:0; url=viewEmpleados.php"); 
+            header("refresh:0; url=viewUsuarios.php"); 
         }
         cierraConexion($conDB);
     ?>

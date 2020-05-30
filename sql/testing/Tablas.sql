@@ -21,7 +21,7 @@ create table materiales(
 
 create table productos(
     productoID integer primary key,
-    nombre varchar(10) not null,
+    nombre varchar(25) not null,
     descripcion varchar(70),
     personalizable integer, 
     precioBase number(8,2) not null,

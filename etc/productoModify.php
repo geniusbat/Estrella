@@ -36,7 +36,6 @@
         <button type="submit" class="btn" name="action" value="update" style="margin-top: 1%;">Enviar</button>
         <button type="submit" class="btn" name="action" value="delete" style="margin-top: 1%;">Eliminar producto</button>
         </form>
-
         <?php
         }
     ?>

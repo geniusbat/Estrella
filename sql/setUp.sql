@@ -26,4 +26,4 @@ insert into encargos(encargoID,precio,extras,productoID,pedidoID,estado) values 
 insert into login(loginID,dni,pass) values (0, '26839538Y', 'admin');
 COMMIT WORK;
 SELECT pass from login where login.dni='26839538Y';
-select * from productos;
+select * from personas;
