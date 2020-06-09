@@ -27,23 +27,40 @@
                 $dni = $_REQUEST["dni"];
                 $nombre = $_REQUEST["nombre"];
                 $direccion = $_REQUEST["direccion"];
-                $objPass= $conDB->prepare("UPDATE PERSONAS SET DNI=:dni,TELEFONO=:telefono,DIRECCION=:direccion WHERE DNI=:dni ");
-                $objPass->bindparam(":dni",$dni);$objPass->bindparam(":nombre",$nombre);
-                $objPass->bindparam(":telefono",$telefono);$objPass->bindparam(":direccion",$direccion);
-                $objPass->bindparam(":id",$id);
-                $objPass->execute();
-                header("refresh:0; url=viewUsuarios.php"); 
+                //Valida
+                $a1 = preg_match("/^([0-9]{8}[A-ZÑa-zñ])/",$dni);
+                $a2 = (preg_match("/^[A-ZÑa-zñ\, áéíóúÁÉÍÚÓ]/",$direccion)&&(strlen($direccion)<25));
+                $a3 = (preg_match("/^[A-ZÑa-zñ\, áéíóúÁÉÍÚÓ]/",$nombre)&&(strlen($nombre)<25));
+                $a4 = ((preg_match("/^([+]{0,1}[0-9]{0,3}[0-9]{9})/",$telefono)));
+                //INICIA
+                if ($a1&&$a2&&$a3&&$a4) {
+                    $objPass= $conDB->prepare("UPDATE PERSONAS SET DNI=:dni,TELEFONO=:telefono,DIRECCION=:direccion WHERE DNI=:dni ");
+                    $objPass->bindparam(":dni",$dni);$objPass->bindparam(":nombre",$nombre);
+                    $objPass->bindparam(":telefono",$telefono);$objPass->bindparam(":direccion",$direccion);
+                    $objPass->bindparam(":id",$id);
+                    $objPass->execute();
+                    header("refresh:0; url=viewUsuarios.php"); 
+                }
+                else {header("refresh:0; url=viewUsuarios.php"); }
             }
             elseif ("create"==$_REQUEST["action"]) {
                 $dni = $_REQUEST["dni"];
                 $nombre=$_REQUEST["nombre"];
                 $direccion=$_REQUEST["direccion"];
                 $telefono=$_REQUEST["telefono"];
-                $objPass= $conDB->prepare("INSERT INTO PERSONAS(DNI,NOMBRE,DIRECCION,TELEFONO) VALUES(:dni,:nombre,:direccion,:telefono)");
-                $objPass->bindparam(":dni",$dni);$objPass->bindparam(":nombre",$nombre);
-                $objPass->bindparam(":telefono",$telefono);$objPass->bindparam(":direccion",$direccion);
-                $objPass->execute();
-                header("refresh:0; url=viewUsuarios.php"); 
+                //Valida
+                $a1 = preg_match("/^([0-9]{8}[A-ZÑa-zñ])/",$dni);
+                $a2 = (preg_match("/^[A-ZÑa-zñ\, áéíóúÁÉÍÚÓ]/",$direccion)&&(strlen($direccion)<25));
+                $a3 = (preg_match("/^[A-ZÑa-zñ\, áéíóúÁÉÍÚÓ]/",$nombre)&&(strlen($nombre)<25));
+                $a4 = ((preg_match("/^([+]{0,1}[0-9]{0,3}[0-9]{9})/",$telefono)));
+                //INICIA
+                if ($a1&&$a2&&$a3&&$a4) {
+                    $objPass= $conDB->prepare("INSERT INTO PERSONAS(DNI,NOMBRE,DIRECCION,TELEFONO) VALUES(:dni,:nombre,:direccion,:telefono)");
+                    $objPass->bindparam(":dni",$dni);$objPass->bindparam(":nombre",$nombre);
+                    $objPass->bindparam(":telefono",$telefono);$objPass->bindparam(":direccion",$direccion);
+                    $objPass->execute();
+                    header("refresh:0; url=viewUsuarios.php"); 
+                }else {header("refresh:100; url=viewUsuarios.php"); }
             }
             elseif ("delete"==$_REQUEST["action"]) {
                 $dni = $_REQUEST["dni"];

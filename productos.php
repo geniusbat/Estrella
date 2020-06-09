@@ -26,7 +26,7 @@
         echo ('<div class="d-flex flex-row justify-content-around flex-wrap titulo">');
         foreach($objPass as $fila) {
     ?>
-        <div class="producto" style="margin: auto;">
+        <div class="producto col-sm-3" style="margin: auto;">
             <img src="/Estrella/img/<?php echo($fila[6]); ?>" width="100px" height="100px">
             <h2><?php echo($fila[1]);?></h2>
             <p><?php echo($fila[2]); ?></p>

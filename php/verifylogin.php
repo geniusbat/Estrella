@@ -25,9 +25,10 @@
         $pass = $_REQUEST["pass"];
         $a1 = preg_match("/^([0-9]{8}[A-ZÑa-zñ])/",$usuario);
         $a2 = preg_match("/^[A-ZÑa-zñ\_\-0-9]*/",$pass);
-        $objPass= $conDB->prepare("SELECT PASS FROM LOGIN WHERE LOGIN.DNI=:usuario");
+        
         if (($a1)and($a2)) {
             try {
+                $objPass= $conDB->prepare("SELECT PASS FROM LOGIN WHERE LOGIN.DNI=:usuario");
                 $objPass->bindparam(':usuario',$usuario);
                 $objPass->execute();
                 $expectedPass= $objPass->fetch()[0]; //De repente esto no funciona

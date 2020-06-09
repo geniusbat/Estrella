@@ -25,7 +25,7 @@
         <div class="notif"></div>
         <h2 class='d-flex flex-row texto titulo'>Modificando usuario</h2>
         <form action="updateEmpleados.php" class="texto" method="POST" onSubmit="return isOneChecked()">
-             <label for="dni">DNI:</label>
+            <label for="dni">DNI:</label>
             <input id="dni" class="form-control" name="dni" placeholder="dni" required pattern="^([0-9]{8}[A-ZÑa-zñ])">
             <label for="sueldo">Sueldo:</label>
             <input id="sueldo" type="number" class="form-control" name="sueldo" placeholder="Sueldo" required maxlength="10">
@@ -41,29 +41,12 @@
             <label for="nombre">Nombre y apellidos:</label>
             <input id="nombre" type="textarea" class="form-control" name="nombre" placeholder="Nombre y apellidos" required pattern="[A-Za-z0-9ÑñÁÉÚÓÍáéúíó ,]+"maxlength="25">
             <label for="direccion">Dirección:</label>
-            <input id="direccion" type="textarea" class="form-control" name="direccion" placeholder="Dirección" required pattern="[A-Za-z0-9ÑñÁÉÚÓÍáéúíó ,]+"maxlength="25">
+            <input id="direccion" type="textarea" class="form-control" name="direccion" placeholder="Dirección" required pattern="/[A-ZÑa-zñ\,\. \-áéíóúÁÉÍÚÓ0-9])/"maxlength="25">
             <label for="telefono">Teléfono:</label>
             <input id="telefono" type="textarea" class="form-control" name="telefono" placeholder="Teléfono" required maxlength="11">
             <button type="submit" class="btn" name="action" value="create" style="margin-top: 1%;">Enviar</button>
         </form>
-        
-        <script>
-            function isOneChecked() {
-                if (document.getElementsName("action").value==update) {
-                var chx = document.getElementsByTagName("input");
-                for (var i=0; i<chx.length; i++) {
-                    if ((chx[i].type == 'radio') && (chx[i].checked)) {
-                    return true;
-                    } 
-                }
-                document.getElementsName("notif").innerHTML="<p>Por favor eliga un horario</p>";
-                return false;
-                }
-                else {
-                    return true;
-                }
-            }
-        </script>
+        <script src="../js/verifyFormEmpleadosAdd.js"></script>
         <?php
         }
     ?>

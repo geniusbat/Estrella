@@ -22,9 +22,9 @@
         include("../AddHtml/navSecondary.html");
         ?>
         <!--Formulario-->
-        <div class="notif"></div>
+        <div id="notif"></div>
         <h2 class='d-flex flex-row texto titulo'>Modificando empleado</h2>
-        <form action="updateEmpleados.php" class="texto" method="POST" onSubmit="return isOneChecked()">
+        <form action="updateEmpleados.php" class="texto" method="POST" onSubmit="return checkea()">
             <p>DNI: <?php echo($_REQUEST["dni"]);?></p>
             <input id="dni" class="form-control" type="hidden" name="dni" value="<?php echo($_REQUEST["dni"]);?>" placeholder="dni" required pattern="^([0-9]{8}[A-ZÑa-zñ])"maxlength="9">
             <label for="sueldo">Sueldo:</label>
@@ -39,26 +39,11 @@
             <label for="dias">Días: (Separados por espacios y/o comas)</label>
             <input id="dias" type="dias" class="form-control" name="dias" value="<?php echo($_REQUEST["dias"]);?>" placeholder="descripcion" required pattern="[A-Za-z0-9ÑñÁÉÚÓÍáéúíó ,]+"maxlength="30">
             <input id="id" type="hidden" name="id" value="<?php echo($_REQUEST["id"]);?>"required>
-            <button type="submit" class="btn" name="action" value="update" style="margin-top: 1%;">Enviar</button>
+            <button type="submit" class="btn" id="update" name="action" value="update" style="margin-top: 1%;">Enviar</button>
             <button type="submit" class="btn" name="action" value="delete" style="margin-top: 1%;">Eliminar Empleado</button>
         </form>
         
-        <script>
-            function isOneChecked() {
-                if (document.getElementsName("action").value==update) {
-                var chx = document.getElementsByTagName("input");
-                for (var i=0; i<chx.length; i++) {
-                    if ((chx[i].type == 'radio') && (chx[i].checked)) {
-                    return true;
-                    } 
-                }
-                document.getElementsName("notif").innerHTML="<p>Por favor eliga un horario</p>";
-                return false;
-                }
-                else {
-                    return true;
-                }
-            }
+        <script src="../js/verifyFormEmpleados.js">
         </script>
         <?php
         }

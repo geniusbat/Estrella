@@ -21,16 +21,17 @@
         if (isAdmin()) {
         ?>
         <!--Formulario-->
-        <h2 class='d-flex flex-row texto titulo'>Modificando producto</h2>
+        <h2 class='d-flex flex-row texto titulo'>Añadiendo producto</h2>
+        <div id="notif"></div>
         <form action="updateProductos.php" class="texto" method="POST">
         <label for="nombre">Nombre:</label>
-        <input id="nombre" class="form-control" name="nombre" placeholder="Nombre" required pattern="[A-Za-z0-9ÑñÁÉÚÓÍáéúíó ]+">
+        <input id="nombre" class="form-control" name="nombre" placeholder="Nombre" maxlength="25" placeholder="Nombre" required pattern="[A-Za-z0-9ÑñÁÉÚÓÍáéúíó ]+">
         <label for="descripcion">Descripción:</label>
-        <input id="descripcion" type="textarea" class="form-control" name="descripcion" placeholder="descripcion" required pattern="[A-Za-z0-9ÑñÁÉÚÓÍáéúíó ]+">
+        <input id="descripcion" type="textarea" class="form-control" name="descripcion" placeholder="descripcion" maxlength="70" required pattern="[A-Za-z0-9ÑñÁÉÚÓÍáéúíó ]+">
         <label for="personalizable">Personalizable:</label>
-        <input id="personalizable" type="number" class="form-control" name="personalizable" pattern="(0|1)" required>
+        <input id="personalizable" type="number" class="form-control" name="personalizable" maxx="1" pattern="(0|1)" required>
         <label for="preciobase">Precio base:</label>
-        <input id="preciobase" type="number" class="form-control" name="preciobase" required>
+        <input id="preciobase" type="number" class="form-control" name="preciobase" max="99999" required>
         <input id="direccion" type="file" name="direccion" class="form-control" required>
         <button type="submit" class="btn" name="action" value="create" style="margin-top: 1%;">Enviar</button>
         </form>
@@ -38,5 +39,6 @@
         <?php
         }
     ?>
+    <script src="../js/verifyFormProductos.js"></script>
 </body>
 </html>

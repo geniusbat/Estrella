@@ -24,7 +24,7 @@
             include("../AddHtml/navSecondary.html");
             echo "<h2 class='d-flex flex-row texto titulo'>Usuarios: </h2>";
             $conDB = iniciaConexion();
-            $objPass= $conDB->prepare("SELECT * FROM PERSONAS WHERE PERSONAS.DNI IN (SELECT DNI FROM USUARIOS)");
+            $objPass= $conDB->prepare("SELECT * FROM PERSONAS WHERE PERSONAS.DNI NOT IN (SELECT DNI FROM EMPLEADOS)");
             $objPass->execute();
             echo("<table class='tablaShow'>");
             echo("<tr> <th>DNI</th> <th>Nombre</th> <th>Dirección</th> <th>Teléfono</th></tr>");
@@ -46,7 +46,7 @@
             echo '<a href="usuarioAdd.php"><button class="tablaShow">Crear usuario</button></a><br>';
             //Empleados
             echo "<h2 class='d-flex flex-row texto titulo'>Empleados: </h2>";
-            $objPass= $conDB->prepare("SELECT * FROM PERSONAS WHERE PERSONAS.DNI NOT IN (SELECT DNI FROM USUARIOS)");
+            $objPass= $conDB->prepare("SELECT * FROM PERSONAS WHERE PERSONAS.DNI IN (SELECT DNI FROM EMPLEADOS)");
             $objPass->execute();
             echo("<table class='tablaShow'>");
             echo("<tr> <th>DNI</th> <th>Nombre</th> <th>Dirección</th> <th>Teléfono</th></tr>");

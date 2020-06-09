@@ -22,15 +22,16 @@
         ?>
         <!--Formulario-->
         <h2 class='d-flex flex-row texto titulo'>Modificando producto</h2>
-        <form action="updateProductos.php" class="texto" method="POST">
+        <div id="notif"></div>
+        <form action="updateProductos.php" class="texto" method="POST" onSubmit="return checkea()">
         <label for="nombre">Nombre:</label>
-        <input id="nombre" class="form-control" name="nombre" value="<?php echo($_REQUEST["nombre"]);?>" placeholder="Nombre" required pattern="[A-Za-z0-9ÑñÁÉÚÓÍáéúíó ]+">
+        <input id="nombre" class="form-control" name="nombre" value="<?php echo($_REQUEST["nombre"]);?>" maxlength="25" placeholder="Nombre" required pattern="[A-Za-z0-9ÑñÁÉÚÓÍáéúíó ]+">
         <label for="descripcion">Descripción:</label>
         <input id="descripcion" type="textarea" class="form-control" name="descripcion" value="<?php echo($_REQUEST["descripcion"]);?>" placeholder="descripcion" required pattern="[A-Za-z0-9ÑñÁÉÚÓÍáéúíó ]+">
         <label for="personalizable">Personalizable:</label>
-        <input id="personalizable" type="number" class="form-control" value="<?php echo($_REQUEST["personalizable"]);?>" name="personalizable" pattern="(0|1)" required>
+        <input id="personalizable" type="number" class="form-control" value="<?php echo($_REQUEST["personalizable"]);?>" max="1" name="personalizable" pattern="(0|1)" required>
         <label for="preciobase">Precio base:</label>
-        <input id="preciobase" type="number" class="form-control" value="<?php echo($_REQUEST["preciobase"]);?>" name="preciobase" required>
+        <input id="preciobase" type="number" class="form-control" value="<?php echo($_REQUEST["preciobase"]);?>" max="999999" name="preciobase" required>
         <input id="id" type="hidden" name="id" value="<?php echo($_REQUEST["id"]);?>"required>
         <input id="direccion" type="file" name="direccion" class="form-control" value="<?php echo($_REQUEST["direccion"]);?>" required>
         <button type="submit" class="btn" name="action" value="update" style="margin-top: 1%;">Enviar</button>
@@ -39,5 +40,6 @@
         <?php
         }
     ?>
+    <script src="../js/verifyFormProductos.js"></script>
 </body>
 </html>

@@ -26,6 +26,10 @@
             if ($_SESSION["admin"]==1) {
                 header("refresh:0; url=etc/adminPage.php");
             }
+            else {
+                include("AddHtml/nav.html");
+                include("AddHtml/login.html");
+            }
         }
     ?>
 </body>
